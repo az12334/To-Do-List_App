@@ -1,0 +1,258 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(to bottom right, #1e3f63, #1b263b);
+   background-image:url("image/Moon_Transparent_PNG_Clip_Art-639687983.png"),url("image/night\ time\ starry\ sky\ background\ 0611.jpg");  
+  background-repeat:  no-repeat,repeat;
+  background-position: top center, fixed;
+  background-size: cover, 150px;
+  background-attachment: fixed;
+  animation: backgroundDrift 80s linear  infinite alternate;
+}
+
+/* === Container === */
+.container {
+  max-width: 650px;
+  margin: 60px auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  animation: floatUp 0.7s ease-in-out;
+}
+
+/* === Header === */
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #e0f7fa;
+  text-shadow: 0 0 10px #8ecae6;
+  animation: pulseGlow 2.5s infinite alternate;
+}
+
+/* === Input Row === */
+.input-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.taskInput,
+.taskSelect {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+  color: #000;
+}
+
+/* === Buttons === */
+.taskButton,
+.filterBtn {
+  padding: 10px 16px;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: linear-gradient(to right, #219ebc, #8ecae6);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.taskButton:hover,
+.filterBtn:hover {
+  transform: scale(1.08);
+  background: linear-gradient(to right, #8ecae6, #219ebc);
+}
+
+/* === Filter Row === */
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1.2rem;
+  justify-content: center;
+}
+
+/* === Danger Button === */
+.danger {
+  background: linear-gradient(to right, #e63946, #ff6b6b);
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.3);
+}
+
+/* === Task List === */
+#taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  animation: bounceIn 0.5s ease;
+}
+
+/* Hover Bounce */
+.task:hover {
+  transform: scale(1.05);
+  animation: hoverBounce 0.3s ease;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.4);
+}
+
+/* Priority Colors */
+.low {
+  border-left: 6px solid #00b4d8;
+}
+
+.medium {
+  border-left: 6px solid #ffb703;
+}
+
+.high {
+  border-left: 6px solid #d62828;
+}
+
+/* Completed Task */
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* === Animations === */
+@keyframes floatUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulseGlow {
+  0% { text-shadow: 0 0 10px #8ecae6; }
+  100% { text-shadow: 0 0 20px #8ecae6; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.1); opacity:1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes hoverBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+  100% { transform: scale(1.05); }
+}
+
+@keyframes backgroundDrift {
+  0% { background-position: center top, fixed; }
+  100% { background-position: left,right -100px; }
+}
+
+.dark-mode {
+  background: #121212;
+  color: #eee;
+}
+.dark-mode .container {
+  background: rgba(33, 33, 33, 0.85);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+.dark-mode h1 {
+  color: #90caf9;
+  text-shadow: 0 0 12px #90caf9;
+}
+.dark-mode .taskButton,
+.dark-mode .filterBtn {
+  background: #1e1e1e;
+  color: #90caf9;
+  box-shadow: 0 0 8px rgba(144, 202, 249, 0.3);
+}
+@media screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+    padding: 1rem;
+    margin: 30px auto;
+  }
+  .input-row,
+  .filter-row {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .taskInput,
+  .taskSelect,
+  .taskButton,
+  .filterBtn {
+    width: 100%;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  h1 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .container {
+    width: 85%;
+    padding: 2rem;
+    margin: 50px auto;
+  }
+  .input-row,
+  .filter-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .taskInput,
+  .taskSelect {
+    width: 45%;
+  }
+  .taskButton,
+  .filterBtn {
+    min-width: 120px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .container {
+    max-width: 600px;
+  }
+  .input-row,
+  .filter-row {
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+  }
+  .taskInput,
+  .taskSelect,
+  .taskButton,
+  .filterBtn {
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+}
